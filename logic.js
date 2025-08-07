@@ -27,6 +27,23 @@ function loadTodos() {
     updateStats();
 }
 
+// edit my to-do 
+function formatTodoText(text) {
+    // First handle markdown-style links [text](url)
+    const markdownRegex = /\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g;
+    text = text.replace(markdownRegex, (match, linkText, url) => {
+        return `<a href="${url}" target="_blank" class="todo-link" onclick="event.stopPropagation()">${linkText}</a>`;
+    });
+    
+    // Then handle standalone URLs
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    text = text.replace(urlRegex, (url) => {
+        const cleanUrl = url.replace(/[.,!?;]$/, '');
+        return `<a href="${cleanUrl}" target="_blank" class="todo-link" onclick="event.stopPropagation()">${cleanUrl}</a>`;
+    });
+    
+    return text;
+}
 // Main functions
 function addTodo() {
     const text = todoInput.value.trim();
@@ -109,7 +126,7 @@ function renderTodos() {
                     <button class="toggle-button ${todo.completed ? 'checked' : ''}" onclick="toggleTodo(${todo.id})">
                         ${todo.completed ? '✓' : '○'}
                     </button>
-                    <span class="todo-text">${todo.text}</span>
+                    <span class="todo-text">${formatTodoText(todo.text)}</span>
                     <button class="delete-button" onclick="deleteTodo(${todo.id})">
                         🗑️
                     </button>
