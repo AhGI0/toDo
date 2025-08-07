@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Todo Magic</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="app-content">
+            <!-- Header -->
+            <div class="header">
+                <h1 class="title">Get your things done.</h1>
+
+            </div>
+
+            <!-- Add Todo Form -->
+            <div class="input-section">
+                <div class="input-container">
+                    <input
+                        type="text"
+                        id="todoInput"
+                        placeholder="Add a new task..."
+                        class="todo-input"
+                    />
+                    <button id="addButton" class="add-button">
+                        +
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-container">
+                <div class="stats-text" id="statsText">
+                    0 active, 0 completed
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-button active" data-filter="all">all</button>
+                    <button class="filter-button" data-filter="active">active</button>
+                    <button class="filter-button" data-filter="completed">completed</button>
+                </div>
+            </div>
+
+            <!-- Todo List -->
+            <div class="todo-list" id="todoList">
+                <!-- Todos will be inserted here -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState">
+                <div class="empty-icon">🎯</div>
+                <p class="empty-text">No tasks yet. Add one above!</p>
+            </div>
+
+    
+        </div>
+    </div>
+
+    <script src="/logic.js">
+    
+    </script>
+</body>
+</html>
